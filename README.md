@@ -6,13 +6,13 @@ This is a desktop-based Restaurant Billing System application implemented in Pyt
 
 2. Install required packages using pip:
 
-             text
-                pip install pandas fpdf
+       text
+       pip install pandas fpdf
 3. Run the application:
-
-        text
-                python app.py
-4. On first run, the SQLite database is automatically initialized with default data and tables.
+   
+       text
+       python app.py
+5. On first run, the SQLite database is automatically initialized with default data and tables.
 
 # Usage
 1. Run app.py to start the application
@@ -21,10 +21,11 @@ This is a desktop-based Restaurant Billing System application implemented in Pyt
 4. Manage menu items, take orders, and generate bills as needed
 5. Export sales reports to CSV files
 # Admin Features
-- Add new menu items
-- View and manage tables
-- Export sales reports
+  - Manage menu items via the Admin Panel.
+  - Manage tables and view their status.
+  - Process orders for dine-in or takeaway.
+  - Generate bills and print them.
+
 # Cashier Features
-- Take orders
-- Generate bills
-- View menu items
+ - Take orders and generate bills.
+ - Access table management to mark tables occupied or free.
