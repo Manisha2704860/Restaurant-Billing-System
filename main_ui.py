@@ -157,6 +157,14 @@ class RestaurantBilling:
         self_options = [row[0] for row in cursor.fetchall()]
         self.table_no_menu = ttk.Combobox(top_input_frame, textvariable=self.table_no_var,values=self_options, state='readonly', width=10)
         self.table_no_menu.grid(row=0, column=1)
+
+        cursor.execute("SELECT table_no FROM tables WHERE status='Free'")
+        self_options = [row[0] for row in cursor.fetchall()]
+        self.table_no_menu['values'] = self_options
+        if self_options:
+            self.table_no_var.set(self_options[0])
+        else:
+            self.table_no_var.set("")
         
         tk.Label(top_input_frame, text="Customer Name (Takeaway):").grid(row=0, column=2, sticky='e')
         self.customer_name_var = tk.StringVar()
@@ -193,7 +201,7 @@ class RestaurantBilling:
             tk.Button(self.menu_frame, text="Open Admin Panel", bg="orange", command=self.open_admin_panel).pack(pady=5)
 
         # ========== Table Management (Admin only) ==========
-        if self.role in ["admin"]:
+        if self.role in ["admin", "cashier"]:
             self.table_frame = tk.LabelFrame(self.root, text="Table Management", padx=10, pady=10)
             self.table_frame.pack(side="top", fill="x", padx=10, pady=5)
             self.table_tree = ttk.Treeview(self.table_frame, columns=("Table", "Status"), show="headings", height=5)
@@ -253,9 +261,6 @@ class RestaurantBilling:
 
         # Initialize cart list
         self.cart = []
-
-        # Setup live clock (top right corner label)
-        self.setup_live_clock()
 
     def load_menu(self):
         for i in self.menu_tree.get_children():
