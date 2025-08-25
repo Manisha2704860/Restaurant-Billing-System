@@ -1,0 +1,5 @@
+name,category,price,gst
+Pizza,Main,250,5
+Burger,Main,120,5
+Coke,Beverage,50,0
+Ice Cream,Dessert,80,0

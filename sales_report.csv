@@ -1,0 +1,2 @@
+OrderID,OrderType,TableNo,Customer,Timestamp,Subtotal,GST,Discount,FinalAmount,PaymentMethod
+1,Dine-In,1,,2025-08-25 05:54:21,530.0,24.0,0.0,554.0,Cash

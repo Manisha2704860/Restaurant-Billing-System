@@ -1,0 +1,27 @@
+{
+  "order_id": 1234,
+  "order_type": "Dine-In",
+  "table_no": "12",
+  "customer_name": "John Doe",
+  "timestamp": "2025-08-21T19:30:00",
+  "items": [
+    {
+      "name": "Pizza",
+      "qty": 2,
+      "price": 250,
+      "gst": 5
+    },
+    {
+      "name": "Coke",
+      "qty": 2,
+      "price": 50,
+      "gst": 0
+    }
+  ],
+  "subtotal": 600,
+  "gst_total": 25,
+  "discount": 0,
+  "final_amount": 625,
+  "payment_method": "Cash"
+}
+
