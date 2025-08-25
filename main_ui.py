@@ -136,6 +136,37 @@ class RestaurantBilling:
         current_time = strftime("%Y-%m-%d %H:%M:%S")
         self.clock_label.config(text=current_time)
         self.root.after(1000, self.update_clock)
+    def remove_selected_from_cart(self):
+        selected_items = self.cart_tree.selection()
+        if not selected_items:
+            messagebox.showerror("Error", "Please select an item to remove from cart.")
+            return
+        for selected in selected_items:
+            item = self.cart_tree.item(selected, "values")
+        # Remove the item from self.cart list matching item_name and qty
+        # Assumes self.cart items are (item_name, qty, price, gst)
+            for i, cart_item in enumerate(self.cart):
+                if cart_item[0] == item[0] and str(cart_item[1]) == str(item[1]):
+                    del self.cart[i]
+                    break
+            self.cart_tree.delete(selected)
+
+    def update_cart_quantity(self, item_name, new_qty):
+    # Update quantity of an item in cart and refresh treeview row
+        for i, (name, qty, price, gst) in enumerate(self.cart):
+            if name == item_name:
+                if new_qty <= 0:
+                # Remove if quantity is zero or less
+                   del self.cart[i]
+                else:
+                   self.cart[i] = (name, new_qty, price, gst)
+                break
+    # Reload cart_tree from self.cart to reflect changes
+        for child in self.cart_tree.get_children():
+            self.cart_tree.delete(child)
+        for item_name, qty, price, gst in self.cart:
+            self.cart_tree.insert("", "end", values=(item_name, qty, price, gst))
+
 
     def __init__(self, root, user, role):
         self.root = root
@@ -236,7 +267,7 @@ class RestaurantBilling:
         self.cart_tree.heading("Price", text="Price")
         self.cart_tree.heading("gst", text="GST (%)")
         self.cart_tree.pack(fill="both", expand=True)
-        
+
     # Buttons in one horizontal frame (side by side)
         buttons_frame = tk.Frame(self.cart_frame)
         buttons_frame.pack(pady=10)
@@ -249,6 +280,10 @@ class RestaurantBilling:
 
         discount_btn = tk.Button(buttons_frame, text="Apply Discount", bg="blue", fg="white", width=15, command=self.apply_discount)
         discount_btn.pack(side=tk.LEFT, padx=5)
+
+        remove_item_btn = tk.Button(buttons_frame, text="Remove Selected", bg="orange", fg="white", width=15, command=self.remove_selected_from_cart)
+        remove_item_btn.pack(side=tk.LEFT, padx=5)
+
 
         # Export report button below buttons_frame or at bottom_frame - your choice
         tk.Button(self.cart_frame, text="Export Report (CSV)", bg="blue", fg="white", command=self.export_report).pack(pady=5)
