@@ -5,16 +5,12 @@ This is a desktop-based Restaurant Billing System application implemented in Pyt
 1. Clone or download the project folder.
 
 2. Install required packages using pip:
-
-       text
-
-            pip install pandas fpdf
+       
+         pip install pandas fpdf
 
 3. Run the application:
-   
-       text
 
-           python app.py
+         python app.py
 
 5. On first run, the SQLite database is automatically initialized with default data and tables.
 
