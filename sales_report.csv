@@ -1,4 +1,4 @@
 OrderID,OrderType,TableNo,Customer,Timestamp,Subtotal,GST,Discount,FinalAmount,PaymentMethod
-1,Takeaway,,manisha,2025-08-25 06:11:22,290.0,12.0,29.0,273.0,Cash
-1,Dine-in,3,manisha,2025-08-25 06:20:22,440.0,12.0,29.0,273.0,UPI
-
+1,Takeaway,,manisha,2025-08-25 20:41:50,490.0,24.5,49.0,465.5,Cash
+2,Dine-In,1,,2025-08-25 20:42:16,670.0,31.0,0.0,701.0,Card
+3,Takeaway,,manisha,2025-08-25 20:42:29,490.0,24.5,0.0,514.5,Cash
