@@ -236,8 +236,7 @@ class RestaurantBilling:
         self.cart_tree.heading("Price", text="Price")
         self.cart_tree.heading("gst", text="GST (%)")
         self.cart_tree.pack(fill="both", expand=True)
-
-    # ...existing code...
+        
     # Buttons in one horizontal frame (side by side)
         buttons_frame = tk.Frame(self.cart_frame)
         buttons_frame.pack(pady=10)
